@@ -1,0 +1,89 @@
+plugins {
+    id "java"
+    id "application"
+    id "checkstyle"
+    id "com.github.spotbugs" version "6.0.26"
+}
+
+///////////////////////////////////////////////////////////////////////
+// Application entry point
+///////////////////////////////////////////////////////////////////////
+application {
+    mainClass = "memoranda.Start"
+}
+
+///////////////////////////////////////////////////////////////////////
+// Compiler settings
+///////////////////////////////////////////////////////////////////////
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = "UTF-8"
+}
+
+///////////////////////////////////////////////////////////////////////
+// Repositories and dependencies for code go here
+///////////////////////////////////////////////////////////////////////
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "com.io7m.xom:xom:1.2.+"
+    implementation "net.sourceforge.nekohtml:nekohtml:1.9.+"
+
+    // added this line for json support
+    implementation "com.google.code.gson:gson:2.10.1"
+
+    testImplementation "org.junit.jupiter:junit-jupiter:5.10.2"
+}
+
+///////////////////////////////////////////////////////////////////////
+// Tests
+///////////////////////////////////////////////////////////////////////
+test {
+    useJUnitPlatform()
+}
+
+///////////////////////////////////////////////////////////////////////
+// Define the Java source and target compatibility
+///////////////////////////////////////////////////////////////////////
+//java {
+//    toolchain {
+//        languageVersion = JavaLanguageVersion.of(17)
+//    }
+//}
+
+///////////////////////////////////////////////////////////////////////
+// Configure Checkstyle
+///////////////////////////////////////////////////////////////////////
+checkstyle {
+    toolVersion = "10.12.5"
+    ignoreFailures = true
+    showViolations = false
+    configFile = file("$rootDir/config/checkstyle/checkstyle.xml")
+}
+
+tasks.withType(Checkstyle).configureEach {
+    reports {
+        html.required = true
+        xml.required = false
+    }
+}
+
+///////////////////////////////////////////////////////////////////////
+// Configure SpotBugs
+///////////////////////////////////////////////////////////////////////
+spotbugs {
+    // This is the SpotBugs engine version (NOT the Gradle plugin version)
+    toolVersion = "4.9.8"
+    ignoreFailures = true
+    showProgress = true
+    effort = com.github.spotbugs.snom.Effort.MAX
+}
+
+// To generate an HTML report instead of XML
+tasks.withType(com.github.spotbugs.snom.SpotBugsTask).configureEach {
+    reports {
+        html.required = true
+        xml.required = false
+    }
+}
