@@ -1,6 +1,6 @@
 iron.ui
 
-These classes handle interaction with the user. If your project is console-based right now, these can represent menus and screens.
+These classes handle interaction with the user.
 
 Main
 
