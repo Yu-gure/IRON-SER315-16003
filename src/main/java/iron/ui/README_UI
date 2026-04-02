@@ -1,0 +1,35 @@
+iron.ui
+
+These classes handle interaction with the user.
+
+Main
+
+The main entry point of the application. This class starts the system and connects the UI layer to the service and core layers.
+
+MainMenu
+
+Represents the main menu of the system. This class displays high-level options for racers, organizers, and administrators.
+
+RacerMenu
+
+Provides racer-specific menu options. This includes actions like buying a license, registering for a race, viewing race history, and leaving reviews.
+
+OrganizerMenu
+
+Provides organizer-specific menu options. This includes creating races, managing race details, and entering results.
+
+AdminMenu
+
+Provides administrator-specific menu options. This includes managing users, licenses, and overall settings.
+
+RaceScreen
+
+Displays race information to the user. This class may show race details, registration deadlines, categories, and participant limits.
+
+RegistrationScreen
+
+Handles the UI flow for race registration. This class gathers racer input and passes it to the appropriate service.
+
+ReviewScreen
+
+Handles the UI flow for leaving race reviews. This class collects review information from racers and sends it to the review logic.
