@@ -1,8 +1,10 @@
-package iron.ui;
+package iron.controller;
 
-import iron.core.*;
+import iron.model.DataManager;
 
 public class AdminController {
+
+    public DataManager dataManager;
     
     public void manageUsers() {
         // TODO: Implement logic

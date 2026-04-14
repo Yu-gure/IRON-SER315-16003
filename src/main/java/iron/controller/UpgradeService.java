@@ -1,6 +1,6 @@
-package iron.service;
+package iron.controller;
 
-import iron.core.*;
+import iron.model.*;
 
 public class UpgradeService {
     

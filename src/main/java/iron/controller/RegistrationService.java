@@ -1,8 +1,10 @@
-package iron.service;
+package iron.controller;
 
-import iron.core.*;
+import iron.model.DataManager;
 
 public class RegistrationService {
+    // Saves registration data to DataManager
+    public DataManager dataManager;
     
     public void signUpForRace() {
         // TODO: Implement logic

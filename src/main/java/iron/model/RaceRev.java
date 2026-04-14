@@ -1,4 +1,4 @@
-package iron.core;
+package iron.model;
 
 public class RaceRev {
     public String reviewId;

@@ -1,4 +1,4 @@
-package iron.core;
+package iron.model;
 
 import java.util.Date;
 

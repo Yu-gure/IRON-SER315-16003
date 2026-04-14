@@ -1,8 +1,7 @@
-package iron.core;
+package iron.model;
 
-import iron.ui.AdminController;
+import iron.controller.AdminController;
 public class Admin extends User {
-    // 1 Admin uses 1 AdminController
     public AdminController adminController;
     
     // TODO: Add constructor, getters, and setters

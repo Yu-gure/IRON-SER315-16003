@@ -1,8 +1,8 @@
-package iron.core;
+package iron.model;
 
 import java.util.List;
 
-import iron.ui.RaceController;
+import iron.controller.RaceController;
 
 public class Organizer extends User {
     public RaceController raceController;

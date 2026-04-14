@@ -1,8 +1,10 @@
-package iron.ui;
+package iron.controller;
 
-import iron.core.*;
+import iron.model.DataManager;
 
 public class RaceController {
+    // Saves race data to DataManager
+    public DataManager dataManager;
     
     public void createRace() {
         // TODO: Implement logic
