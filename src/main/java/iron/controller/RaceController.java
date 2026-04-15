@@ -3,8 +3,14 @@ package iron.controller;
 import iron.model.DataManager;
 
 public class RaceController {
-    // Saves race data to DataManager
-    public DataManager dataManager;
+    private DataManager dataManager;
+    
+    public RaceController(DataManager dataManager) {
+        this.dataManager = dataManager;
+    }
+
+    public DataManager getDataManager() { return dataManager; }
+    public void setDataManager(DataManager dataManager) { this.dataManager = dataManager; }
     
     public void createRace() {
         // TODO: Implement logic

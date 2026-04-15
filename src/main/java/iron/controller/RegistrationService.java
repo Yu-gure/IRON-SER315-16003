@@ -3,8 +3,14 @@ package iron.controller;
 import iron.model.DataManager;
 
 public class RegistrationService {
-    // Saves registration data to DataManager
-    public DataManager dataManager;
+    private DataManager dataManager;
+    
+    public RegistrationService(DataManager dataManager) {
+        this.dataManager = dataManager;
+    }
+
+    public DataManager getDataManager() { return dataManager; }
+    public void setDataManager(DataManager dataManager) { this.dataManager = dataManager; }
     
     public void signUpForRace() {
         // TODO: Implement logic

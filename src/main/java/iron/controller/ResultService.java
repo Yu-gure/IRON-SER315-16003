@@ -7,8 +7,14 @@ import iron.model.DataManager;
 import java.util.List;
 
 public class ResultService {
+    private DataManager dataManager;
     
-    public DataManager dataManager;
+    public ResultService(DataManager dataManager) {
+        this.dataManager = dataManager;
+    }
+
+    public DataManager getDataManager() { return dataManager; }
+    public void setDataManager(DataManager dataManager) { this.dataManager = dataManager; }
     
     public void submitResult(Race race, Racer racer, int placement) {
         // TODO: Implement logic for organizers to enter results

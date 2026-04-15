@@ -1,13 +1,18 @@
 package iron.controller;
 
-import iron.model.DataManager;
 import iron.model.License;
 import iron.model.Racer;
+import iron.model.DataManager;
 
 public class LicenseService {
+    private DataManager dataManager;
     
-    // Saves and loads license data
-    public DataManager dataManager;
+    public LicenseService(DataManager dataManager) {
+        this.dataManager = dataManager;
+    }
+
+    public DataManager getDataManager() { return dataManager; }
+    public void setDataManager(DataManager dataManager) { this.dataManager = dataManager; }
     
     public License issueLicense(Racer racer, int categoryLevel) {
         // TODO: Implement logic to issue a new license

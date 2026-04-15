@@ -1,8 +1,16 @@
 package iron.model;
 
 public class User {
-    public String userId;
-    public String name;
+    private String userId;
+    private String name;
     
-    // TODO: Add constructor, getters, and setters
+    public User(String userId, String name) {
+        this.userId = userId;
+        this.name = name;
+    }
+
+    public String getUserId() { return userId; }
+    public void setUserId(String userId) { this.userId = userId; }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 }
