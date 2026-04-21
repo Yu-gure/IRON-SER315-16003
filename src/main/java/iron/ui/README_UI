@@ -4,7 +4,7 @@ These classes handle interaction with the user.
 
 Main
 
-The main entry point of the application. This class starts the system and connects the UI layer to the service and core layers.
+The main entry point of the application. This class starts the system and connects the UI layer to the service and iron.core layers.
 
 MainMenu
 
