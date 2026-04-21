@@ -1,4 +1,4 @@
-iron.iron.core
+iron.core
 
 These are the main domain classes. They represent the things the system is built around.
 
