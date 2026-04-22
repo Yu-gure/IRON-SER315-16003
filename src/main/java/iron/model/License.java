@@ -27,7 +27,11 @@ public class License {
     
     // checks current date against expirationDate
     public boolean isValid() {
-        // TODO
-        return false; 
+        //if either is null automatically false
+        if (this.issueDate == null || this.expirationDate == null) {
+            return false;
+        }
+        //only pulls if license is before expiration
+        return new Date().before(expirationDate);
     }
 }
