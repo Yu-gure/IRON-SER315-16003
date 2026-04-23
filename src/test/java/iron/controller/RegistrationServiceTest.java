@@ -184,4 +184,71 @@ public class RegistrationServiceTest {
         String result2 = registrationService.signUpForRace(validRacer, validRace);
         assertEquals("Error: Unable to save registration data.", result2);
     }
+
+    // test for invalid IDs
+    @Test
+    @DisplayName("Invalid IDs should return errors")
+    void testInvalidIDs() {
+        validRacer.setUserId(" ");
+        String result1 = registrationService.signUpForRace(validRacer, validRace);
+        assertEquals("Error: Invalid racer ID.", result1);
+
+        validRacer.setUserId("RACER001");
+        validRace.setRaceId(" ");
+        String result2 = registrationService.signUpForRace(validRacer, validRace);
+        assertEquals("Error: Invalid race ID.", result2);
+    }
+
+    // test for null allowed categories. tests should pass
+    @Test
+    @DisplayName("Null allowed categories should allow registration")
+    void testNullAllowedCategories() {
+        validRace.setAllowedCategories(null);
+
+        doNothing().when(dataManager).updateRecord(anyString(), anyString(), anyString());
+
+        String result = registrationService.signUpForRace(validRacer, validRace);
+
+        assertNotNull(result);
+        assertFalse(result.startsWith("Registration is closed for this race. Please select another."));
+    }
+    // test for null Race Registrations list
+    @Test
+    @DisplayName("Null race registrations list should not crash")
+    void testNullRaceRegistrations() {
+        validRace.setRegistrations(null);
+
+        doNothing().when(dataManager).updateRecord(anyString(), anyString(), anyString());
+
+        String result = registrationService.signUpForRace(validRacer, validRace);
+
+        assertNotNull(result);
+    }
+
+    // test for null Racer Registrations list
+    @Test
+    @DisplayName("Null racer registrations list should not crash")
+    void testNullRacerRegistration() {
+        validRacer.setRegistrations(null);
+
+        doNothing().when(dataManager).updateRecord(anyString(), anyString(), anyString());
+
+        String result = registrationService.signUpForRace(validRacer, validRace);
+
+        assertNotNull(result);
+    }
+
+    // test for unlimited capacity. test for if participant limit = 0
+    @Test
+    @DisplayName("Zero participant lilit should allow unlimited registrations")
+    void testUnlimitedCapacity() {
+        validRace.setParticipantLimit(0);
+
+        doNothing().when(dataManager).updateRecord(anyString(), anyString(), anyString());
+
+        String result = registrationService.signUpForRace(validRacer, validRace);
+
+        assertNotNull(result);
+        assertFalse(result.startsWith("Registration is closed for this race. Please select another."));
+    }
 }
