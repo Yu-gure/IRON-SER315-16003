@@ -20,6 +20,15 @@ public class RacerDashboard implements RacerObserver {
         System.out.println("Notification for " + racer.getName() + ": " + notification.getMessage());
     }
 
+    public void displayNotifications() {
+        if (racer.getNotifications() == null || racer.getNotifications().isEmpty()) {
+            System.out.println("No notifications.");
+            return;
+        }
+        for (Notification n : racer.getNotifications()) {
+            System.out.println("[NOTIF - " + racer.getName() + "] " + n.getMessage());
+        }
+    }
 
     public void displayRacerMenu() {
         // TODO: Implement UI logic
