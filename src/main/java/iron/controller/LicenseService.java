@@ -47,7 +47,18 @@ public class LicenseService {
     }
     
     public void renewLicense(License license) {
-        // TODO: Implement logic to update the expiryDate
+
+        // Null check
+        if (license == null) {
+            return;
+        }
+
+        // Create Calendar object to set current date forward a year
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        calendar.add(Calendar.YEAR, 1);
+
+        license.setExpirationDate(calendar.getTime());  // Update the license expiration
     }
     
     public boolean checkExpiration(License license) {
