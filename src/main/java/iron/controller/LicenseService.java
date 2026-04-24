@@ -72,7 +72,13 @@ public class LicenseService {
     }
     
     public boolean validateOfficialRaceEntry(Racer racer) {
-        // TODO: Implement logic to verify if the racer has a valid license for official races
-        return false;
+
+        // Null checks
+        if (racer == null || racer.getLicense() == null) {
+            return false;
+        }
+
+        // Verifies the racer's category matches their license category
+        return racer.getLicense().getCategoryLevel() == racer.getCategory();
     }
 }
