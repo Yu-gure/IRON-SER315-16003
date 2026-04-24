@@ -62,8 +62,13 @@ public class LicenseService {
     }
     
     public boolean checkExpiration(License license) {
-        // TODO: Implement logic to check if current date is past expiryDate
-        return false;
+        // Null check
+        if (license == null || license.getExpirationDate() == null) {
+            return false;
+        }
+
+        // If expiration is BEFORE current date, it is expired
+        return license.getExpirationDate().before(new Date());
     }
     
     public boolean validateOfficialRaceEntry(Racer racer) {
