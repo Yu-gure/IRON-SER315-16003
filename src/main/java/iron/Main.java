@@ -1,5 +1,35 @@
 package iron;
 
+import iron.view.UI;
+
+public class Main {
+    public static void main(String[] args) {
+        UI ui = new UI();
+
+        ui.showMainMenu();
+        ui.showAvailableRaces();
+        ui.showRegistrationOpen("race 1");
+        ui.showRegistrationClosed("race 2");
+        ui.showLicenseValid();
+        ui.showLicenseInvalid();
+        ui.showCategoryAllowed();
+        ui.showCategoryNotAllowed();
+        ui.showSlotsAvailable();
+        ui.showSlotsUnavailable();
+        ui.registrationSuccessful("race 1");
+
+
+    }
+}
+
+
+
+
+
+
+
+
+/*
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
@@ -15,3 +45,4 @@ public class Main {
         }
     }
 }
+ */
