@@ -12,6 +12,12 @@ public class UpgradeService {
     public UpgradeService(DataManager dataManager) {
         this.dataManager = dataManager;
     }
+    public UpgradeService(DataManager dataManager, NotificationService notificationService, LicenseService licenseService) {
+        this.dataManager = dataManager;
+        this.notificationService = notificationService;
+        this.licenseService = licenseService;
+    }
+
     /**
      * Checks if a racer is eligible for a category upgrade.
      * Racer must have a valid license and at least 3 podium finishes.
