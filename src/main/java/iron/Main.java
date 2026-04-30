@@ -1,6 +1,6 @@
 package iron;
 
-import iron.ui.UI;
+import iron.view.UI;
 
 public class Main {
     public static void main(String[] args) {

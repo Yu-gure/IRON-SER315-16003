@@ -1,6 +1,5 @@
-package iron.ui;
+package iron.view;
 
-import java.sql.SQLOutput;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
