@@ -15,8 +15,4 @@ public class Notification {
     public String getMessage() { return message; }
     public void setMessage(String message) { this.message = message; }
     
-    // notify racer
-    public void sendToRacer() {
-        // TODO
-    }
 }

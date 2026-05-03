@@ -22,9 +22,9 @@ public class UI {
 
     public int showAvailableRaces() {
         System.out.println("\n====== AVAILABLE RACES ======");
-        System.out.println("1. Race 1");
-        System.out.println("2. Race 2");
-        System.out.println("3. Race 3");
+        System.out.println("1. Tour de Tuscon");
+        System.out.println("2. Tour de Maui");
+        System.out.println("3. Tour de Portland");
         System.out.println("0. Back");
         return getValidChoice(0, 3);
     }

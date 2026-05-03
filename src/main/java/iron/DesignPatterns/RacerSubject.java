@@ -1,6 +1,5 @@
-package iron.controller;
+package iron.DesignPatterns;
 
-import iron.view.RacerObserver;
 import iron.model.Notification;
 
 public interface RacerSubject {

@@ -1,7 +1,7 @@
 package iron.model;
 
 import java.util.List;
-import iron.controller.RegistrationService;
+import iron.DesignPatterns.RegistrationService;
 
 public class Racer extends User {
     private int category;
