@@ -1,33 +1,44 @@
 package iron.controller;
 
+import iron.model.DataManager;
 import iron.model.Notification;
 import iron.model.Racer;
-import iron.model.DataManager;
-
+import iron.DesignPatterns.RacerObserver;
+import iron.DesignPatterns.RacerSubject;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
-public class NotificationService {
+// Subject - manages observers and delivers notifications
+public class NotificationService implements RacerSubject {
     private DataManager dataManager;
+    private final List<RacerObserver> observers = new ArrayList<>();
+
     public NotificationService(DataManager dataManager) {
         this.dataManager = dataManager;
     }
 
-    public DataManager getDataManager() { return dataManager; }
-    public void setDataManager(DataManager dataManager) { this.dataManager = dataManager; }
-    /**
-     * Sends a notification to a specific racer.
-     * Each notificationId is a unique code that organizers can use
-     * to quickly identify and track messages or errors.
-     * The notification is sent to a specific racer by matching their user ID.
-     *
-     * @param racer the racer to receive the notification
-     * @param message the message content to send to the racer
-     */
-    public void sendNotification(Racer racer, String message) {
-        if(racer == null || message == null){return;}
+    @Override
+    public void addObserver(RacerObserver observer) {
+        observers.add(observer);
+    }
 
-        String notificationId = "NotificationId-" + (int)(Math.random() * 10000);
-        Notification notification = new Notification(notificationId, message);
+    @Override
+    public void removeObserver(RacerObserver observer) {
+        observers.remove(observer);
+    }
+
+    @Override
+    public void notifyObservers(Notification notification) {
+        for (RacerObserver observer : observers) {
+            observer.receiveNotification(notification);
+        }
+    }
+
+    public void sendNotification(Racer racer, String message) {
+        if (racer == null || message == null) { return; }
+
+        String notificationId = UUID.randomUUID().toString();        Notification notification = new Notification(notificationId, message);
 
         if (racer.getNotifications() == null) {
             racer.setNotifications(new ArrayList<>());
@@ -35,18 +46,20 @@ public class NotificationService {
         racer.getNotifications().add(notification);
 
         if (dataManager != null) {
-            dataManager.updateRecord("notifications", racer.getUserId(), notification.toString());
+            dataManager.updateRecord("notifications", racer.getUserId(),
+                    notification.toString());
         }
 
-        System.out.println("Notification for " + racer.getName() + ": " + message);
-
+        // notify all registered observers
+        notifyObservers(notification);
     }
-    
+
     public void generateSystemMessage(String eventDetails) {
-        // TODO: Implement logic to trigger automated event notifications (e.g., race canceled, registration open)
+        // TODO: Implement logic
     }
 
-
-
-
+    public DataManager getDataManager() { return dataManager; }
+    public void setDataManager(DataManager dataManager) {
+        this.dataManager = dataManager;
+    }
 }

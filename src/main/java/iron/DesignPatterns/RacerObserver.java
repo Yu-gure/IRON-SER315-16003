@@ -1,4 +1,4 @@
-package iron.view;
+package iron.DesignPatterns;
 
 import iron.model.Notification;
 
