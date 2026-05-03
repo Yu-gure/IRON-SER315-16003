@@ -136,7 +136,7 @@ public class Main {
 
                 switch (mainChoice) {
                     case 0:
-                        running = false;
+                        racerActive = false;
                         break;
 
                     case 1:
